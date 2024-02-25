@@ -1,6 +1,5 @@
 {
-  "homepage": "http://yun7420.github.io/rockscissorspaper-2023/",
-  "name": "rockscissorspaper-2023",
+  "name": "roshambo",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
