@@ -1,32 +1,180 @@
+/* Reset Css Style */
+* {
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  list-style: none;
+}
+
+button {
+  background-color: transparent;
+  border: 0;
+  cursor: pointer;
+}
+
+/* App box Css Style */
+.App {
+  position: relative;
+
+  width: 100%;
+  height: 100vh;
+  background-color: #ff007a;
+}
+
 .box {
-  margin: 10px;
-  width: 800px;
-  height: 800px;
-  border: 1px solid black;
-  background-color: white;
-  justify-content: space-around;
-  flex-direction: column;
-  text-align: center;
-  font-size: 20pt;
-}
-
-.item-img {
-  width: 400px;
-}
-
-.main {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  padding: 1.5rem;
+  box-sizing: border-box;
+
+  width: 500px;
+  height: calc(100vh - 5rem);
+  background-color: white;
+  border-radius: 1rem;
+  box-shadow: 1px 1px 10px black;
 }
-.win {
-  border: 10px solid green;
+
+/* Score Css Style */
+.scoreBox {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding-bottom: 1rem;
+
+  width: 100%;
+  border-bottom: 1px solid #ccc;
+}
+
+.score {
+  display: flex;
+  gap: 1rem;
+
+  font-weight: bolder;
+}
+
+.resetButton {
+  padding: 0.5rem 1rem;
+  border-radius: 1rem;
+  border: 1px solid #ccc;
+}
+
+/* Main Css Style */
+.main {
+  flex: 1;
+
+  display: flex;
+  justify-content: space-between;
+
+  margin: 2rem 0;
+}
+
+.main > div {
+  flex: 1;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.main > div:nth-of-type(1) {
+  border-right: 1px solid #ccc;
+}
+
+.main img {
+  width: 100px;
+  height: 100px;
+}
+
+.main .Win {
   color: green;
 }
-.lose {
-  border: 10px solid red;
+
+.main .Lose {
   color: red;
 }
-.tie {
-  border: 10px solid black;
-  color: black;
+
+/* Button Css Style */
+.buttonList {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+
+  padding-top: 1.5rem;
+
+  width: 100%;
+  border-top: 1px solid #ccc;
+}
+
+.buttonList button {
+  position: relative;
+
+  width: 80px;
+  height: 80px;
+  border-radius: 1rem;
+  border: 1px solid #ccc;
+}
+
+.buttonList button img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  width: 60px;
+  height: 60px;
+}
+
+/* 반응형 */
+@media only screen and (max-width: 600px) {
+  /* App box Css Style */
+  .box {
+    width: 90%;
+    height: calc(100vh - 8rem)
+  }
+}
+
+@media only screen and (max-width: 450px) {
+  /* App box Css Style */
+  .box {
+    height: calc(100vh - 10rem)
+  }
+
+  /* Main Css Style */
+  .main img {
+    width: 80px;
+    height: 80px;
+  }
+}
+
+@media only screen and (max-width: 400px) {
+  /* App box Css Style */
+  .box {
+    height: calc(100vh - 12rem)
+  }
+
+  /* Button Css Style */
+  .buttonList {
+    gap: 0.5rem;
+  }
+
+  .buttonList button {
+    width: 60px;
+    height: 60px;
+  }
+
+  .buttonList button img{
+    width: 40px;
+    height: 40px;
+  }
 }
