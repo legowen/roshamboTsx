@@ -7,11 +7,11 @@ import Button from "./components/Button";
 // Style
 import "./App.css";
 // Image
-import Rock from "../src/image/rock.png"
-import Scissors from "../src/image/scissors.png"
-import Paper from "../src/image/paper.png"
+import Rock from "../src/img/rock.png"
+import Scissors from "../src/img/scissors.png"
+import Paper from "../src/img/paper.png"
 // Types
-import { Item, ItemValue } from "./types/Item";
+import { Item, ItemValue } from "./types/item";
 
 const item: Item = {
   Rock: {
@@ -21,9 +21,9 @@ const item: Item = {
   },
 
   Scissors: {
-    name: "Sissors",
+    name: "Scissors",
     src: Scissors,
-    alt: "Sissors Image",
+    alt: "Scissors Image",
   },
 
   Paper: {
@@ -43,7 +43,7 @@ function App() {
     computerItem: null,
   });
 
-  // Win/lose Result
+  // Result
   const [result, setResult] = useState<
     | { userResult: string; computerResult: string }
     | { userResult: null; computerResult: null }
@@ -65,9 +65,9 @@ function App() {
       : JSON.parse(localStorage.getItem("score") as string)
   );
 
-  // User Select Item
+  // User Item Select 
   const userPlayStart = (userChoice: string) => {
-    // User/Computer Select Function
+    // user, computer select 
     let userSelect: ItemValue = item[userChoice];
     let computerSelect: ItemValue = item[computerPlayStart()];
 
@@ -76,7 +76,7 @@ function App() {
       computerItem: computerSelect,
     });
 
-    // User and Computer win detection function
+    // Judgement Result 
     let userJudgementResult: string = userJudgement(userSelect, computerSelect);
     let computerJudgementResult: string =
       computerJudgement(userJudgementResult);
@@ -86,13 +86,13 @@ function App() {
       computerResult: computerJudgementResult,
     });
 
-    // Add Score Fuction
+    // Add Score
     scoreAdd(userJudgementResult, computerJudgementResult);
   };
 
-  // Computer's Item Select
+  // Computer Item Select
   const computerPlayStart = (): string => {
-    // Item Key array
+    // item key Array
     let itemKey: string[] = Object.keys(item);
 
     // Generate a random number between 1 and 2
@@ -101,7 +101,7 @@ function App() {
     return itemKey[randomNumber];
   };
 
-  // User win?
+  // user result judgememt
   const userJudgement = (
     userSelect: ItemValue,
     computerSelect: ItemValue
@@ -110,17 +110,17 @@ function App() {
 
     if (userSelect.name === computerSelect.name) {
       userJudgement = "Tie";
-    } else if (userSelect.name === "바위")
-      userJudgement = computerSelect.name === "가위" ? "Win" : "Lose";
-    else if (userSelect.name === "가위")
-      userJudgement = computerSelect.name === "보" ? "Win" : "Lose";
-    else if (userSelect.name === "보")
-      userJudgement = computerSelect.name === "바위" ? "Win" : "Lose";
+    } else if (userSelect.name === "Rock")
+      userJudgement = computerSelect.name === "Scissors" ? "Win" : "Lose";
+    else if (userSelect.name === "Scissors")
+      userJudgement = computerSelect.name === "Paper" ? "Win" : "Lose";
+    else if (userSelect.name === "Paper")
+      userJudgement = computerSelect.name === "Rock" ? "Win" : "Lose";
 
     return userJudgement;
   };
 
-  // Computer Win?
+  // Cpmputer result Judgement
   const computerJudgement = (userJudgementResult: string): string => {
     let computerJudgement = "";
 
@@ -156,7 +156,7 @@ function App() {
     }
   };
 
-  // Save Score at Local Storage
+  // Save score to local storage
   useEffect(() => {
     localStorage.setItem("score", JSON.stringify(score));
   })
